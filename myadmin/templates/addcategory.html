@@ -1,0 +1,47 @@
+{% extends "adminhome.html" %}
+{% load static %}
+{% block slider %}
+{% endblock %}
+
+{% block card %}
+<style>
+    body {
+        background-image: url("{% static 'image/photo3.jpg'%}");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        }
+
+form {
+    border-style: none;
+}
+
+</style>
+<div class="container my-5">
+  <font color="blue">{{output}}</font>
+  <form class="row g-3" method="POST" action="/myadmin/addcategory/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-md-12">
+      <label for="inputEmail4" class="form-label"><b>Category Name</b></label>
+      <input type="text" name="catnm" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-md-12">
+      <div class="input-group">
+        <input type="file" name="caticonnm" class="form-control"
+          id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+          aria-label="Upload">
+        <button class="btn btn-outline-secondary" type="button"
+          id="inputGroupFileAddon04"><b>Category Icon</b></button>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Add Category</button>
+    </div>
+  </form>
+</div>
+<br>
+
+{% endblock %}

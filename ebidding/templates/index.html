@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block manu %}
+{% endblock %}
+{% block card %}
+
+<style>
+  .card-deck {
+    min-height: 450px;
+    width: 800px;
+  }
+
+  .card {
+    height: 150px;
+    width: 200px;
+    float: left;
+  }
+</style>
+
+
+  <h1>Categories :- </h1>
+  <br>
+
+  <center>
+    <div class="card-deck ">
+      {% for row in clist %}
+      <a href="/viewsubcategory/?catnm={{row.catnm}}">
+        <div class="card">
+          <img class="card-img-top" src="{{media_url}}{{row.caticonnm}}" height="100" width="150" />
+          <div class="card-body">
+            <h5 class="card-title">{{row.catnm}}</h5>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <br>
+  </center>
+
+{% endblock %}

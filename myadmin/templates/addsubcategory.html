@@ -1,0 +1,58 @@
+{% extends "adminhome.html" %}
+{% load static %}
+{% block slider %}
+{% endblock %}
+
+{% block card %}
+
+<style>
+  body {
+      background-image: url("{% static 'image/photo3.jpg'%}");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+  }
+
+form {
+  border-style: none;
+}
+
+</style>
+<div class="container my-5">
+<font color="blue">{{output}}</font>
+
+<form class="row g-3" method="POST" action="/myadmin/addsubcategory/" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="col-md-12">
+    <label for="inputEmail4" class="form-label">Category Name</label>
+    <select class="form-select" name="catnm" aria-label="Default select example">
+      <option>Select Sub Category </option>
+      {% for row in clist %}
+      <option>{{row.catnm}}</option>
+      {% endfor %}
+
+    </select>
+  </div>
+
+  <div class="col-md-12">
+    <label for="inputEmail4" class="form-label">Subcategory Name</label>
+    <input type="text" name="subcatnm" class="form-control" id="inputEmail4">
+  </div>
+
+  <div class="col-md-12">
+    <div class="input-group">
+      <input type="file" class="form-control" name="subcaticonnm" id="inputGroupFile04"
+        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+      <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Subcategory icon </button>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add Sub Category</button>
+  </div>
+</form>
+</div>
+
+{% endblock %}

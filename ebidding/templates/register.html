@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+{% block manu %}{% endblock %}
+
+
+{% block card %}
+
+<div class="container my-5 col-md-10">
+    <style>
+        body {
+            background-image: url("{% static 'image/photo.jpg'%}");
+            min-height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+        /* background-image{
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+        } */
+      form{
+        filter:none;
+          padding-left:30%;
+          border: solid;
+          border-radius: 12px;
+          border: 8px;
+         
+      }
+        </style>
+    <center><h1> Register Here</h1></center>
+
+    <font color="blue">{{output}}</font>
+    <form action="/register/" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label for="inputEmail4" class="fw-bold">Name</label>
+                <!-- fw-bold ==> this is for bold the words -->
+                <input type="text" class="form-control" id="name" name="name"
+                    placeholder="Enter Your Name">
+            </div>
+            <div class="form-group col-md-7">
+                <label for="inputEmail4" class="fw-bold">Username</label>
+                <input type="email" class="form-control" id="username"
+                    name="username" placeholder="Email">
+            </div>
+            <div class="form-group col-md-7">
+                <label for="inputPassword4" class="fw-bold">Password</label>
+                <input type="password" class="form-control" id="password"
+                    name="password" placeholder="Password">
+            </div>
+
+            <div class="form-group col-md-7">
+                <label for="inputEmail4" class="fw-bold">Mobile</label>
+                <input type="number" class="form-control" id="email"
+                    name="mobile" placeholder="Enter your Number">
+            </div>
+        </div>
+
+
+
+        <!-- <div class="row">
+    <div class="row mb-3 my-5 col-md-7 gap-1"> -->
+        <div class="form-check">
+            <label for="gender" class="fw-bold">Gender
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input class="form-check-input" type="radio" name="gender"
+                value="male" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Male &nbsp;&nbsp;&nbsp;&nbsp;
+            </label>
+            <!-- </div>
+          <div class="form-check"> -->
+            <input class="form-check-input" type="radio" name="gender"
+                value="female">
+            <label class="form-check-label" for="exampleRadios2">
+                Female
+            </label>
+        </div>
+        <!-- </div>
+</div> -->
+
+        <label for="gender" class="fw-bold">Address</label>
+        <div class="form-floating">
+            <textarea class="form-control w-50" placeholder="Leave a comment
+                here" id="floatingTextarea" name="address"></textarea>
+            <!--  w-50/25//75/100 is  for manage the textarea size -->
+            <label for="floatingTextarea">Enter Your Address</label>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label for="inputState" class="fw-bold">City</label>
+                <select id="inputState" class="form-control" name="city">
+                    <option selected>Choose...</option>
+                    <option>Indore</option>
+                    <option>Bhopal</option>
+                    <option>Rewa</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <button type="submit" value="Register" class="btn btn-primary fw-bold">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}

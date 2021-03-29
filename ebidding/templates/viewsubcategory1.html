@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block manu %}
+{% endblock %}
+{% block card %}
+
+<style>
+.cardmanu {
+  margin: 0%;
+  padding: 0%;
+  /* height: 1024px; */
+  width: 100%;
+}
+
+  .card-deck {
+    /* min-height: 450px; */
+    width: 70%;
+  }
+
+  .card {
+    /* min-height: 150px; */
+    width: 400px;
+    float: left;
+  }
+
+  .sidebar{
+    width:30% ;
+
+  }
+</style>
+
+<h1>Sub Category >> {{catnm}}</h1>
+
+<div class="cardmanu container-fluid">
+
+  <!-- row block starts -->
+  <div class="sidebar row min-vh-100 flex-column flex-md-row">
+    <aside class="col-4 col-md-3 col-xl-2 p-0 bg-secondary flex-shrink-1">
+      <nav class="navbar nevbar-expand-md nevbar-dark bd-dark flex-md-column
+        flex-row align-items-center py-2 text-center sticky-top" id=sidebar>
+        <div class="text-center p-3">
+
+
+        </div>
+        <button class="navbar-toggler" type="button"
+          data-bs-toggle='collapse' data-bs-target="#nav" aria-controls="nav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"> Categories</span>
+        </button>
+        <!-- <div class="collapse navbar-collapse prder-last" id="nav"> -->
+        <div class="navbar" id="nav">
+
+          <ul class="navbar-nav flex-column w-100 justify-content-center">
+            {% for row in clist %}
+            <li class="nav-item"><a class="nav-link"
+                href="/viewsubcategory/?catnm={{row.catnm}}">{{row.catnm}}</a></li>
+            {%endfor%}
+
+          </ul>
+        </div>
+      </nav>
+    </aside>
+  </div>
+
+<!-- 
+ <div class="row min-vh-100 flex-column flex-md-row"> -->
+    <div class="card-deck  col-8 col-md-9 col-xl-10 bg-secondary ">
+
+      {% for row in sclist %}
+      <a href="">
+        <div class="card">
+          <img class="card-img-top" src="{{media_url}}{{row.subcaticonnm}}"
+            height="100" width="150" />
+          <div class="card-body">
+            <h5 class="card-title">{{row.subcatnm}}</h5>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  <!-- </div>  -->
+</div>
+
+
+<!-- Sidebar starts -->
+<!-- 
+    <label><b> <h3> Categories </h3></b></label>
+    <b><hr></b>
+    <ul class="nav nav-sidebar">
+
+      {% for row in clist %}
+      <li><a href="/viewsubcategory/?catnm={{row.catnm}}">{{row.catnm}}</a></li>
+      {%endfor%}
+
+    </ul>
+
+
+
+
+ 
+    <div class="card-deck col-sm-9 col-md-9">
+
+      {% for row in sclist %}
+      <a href="">
+        <div class="card">
+          <img class="card-img-top" src="{{media_url}}{{row.subcaticonnm}}"
+            height="100" width="150" />
+          <div class="card-body">
+            <h5 class="card-title">{{row.subcatnm}}</h5>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+   
+  </div>
+ 
+  </div> -->
+{% endblock %}
