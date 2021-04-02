@@ -3,6 +3,7 @@ from django.conf import settings
 from . import models
 from . import sendEmail
 from myadmin import models as myadmin_models
+from user import models as user_models 
 import time
 
 media_url = settings.MEDIA_URL
@@ -32,6 +33,13 @@ def viewsubcategory(request):
     sclist = myadmin_models.SubCategory.objects.filter(catnm=catnm)
     return render(request, "viewsubcategory.html", {"catnm": catnm, "clist": clist, "sclist": sclist, "media_url": media_url})
 
+
+def viewproduct(request):
+    catnm = request.GET.get("catnm")
+    clist = myadmin_models.Category.objects.all()
+    sclist = myadmin_models.SubCategory.objects.filter(catnm=catnm)
+    uplist = user_models.Product.objects.filter(catnm=catnm)
+    return render(request, "viewproduct.html", {"catnm": catnm, "clist": clist, "sclist": sclist, 'uplist':uplist,"media_url": media_url})
 
 def about(request):
     return render(request, 'about.html')

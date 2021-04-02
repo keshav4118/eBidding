@@ -1,6 +1,6 @@
-{% extends "userhome.html" %}
+{% extends "base.html" %}
 {% load static %}
-{% block menu %}
+
 
 {% block menu %}
 <h5>Welcome Admin : {{sunm}}</h5> 
@@ -40,9 +40,10 @@
 {% endblock %}
 
 {% block card %}
+<br>
+<center><h1><b>Welcome to Userhome </b></h1>
 
-<h1><b>Welcome to Userhome </b></h1>
 <h1><b>User : {{sunm}} </b></h1>
-    <br>
+    <br></center>
 
     {% endblock %}

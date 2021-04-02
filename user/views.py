@@ -32,8 +32,8 @@ def addproduct(request):
   return render(request,"addproduct.html",{"output":"","clist":clist,"sunm":request.session["sunm"]}) 
  else:
   title=request.POST.get('title')
-  category=request.POST.get('category')	
-  subcategory=request.POST.get('subcategory')
+  category=request.POST.get('cat')	
+  subcategory=request.POST.get('subcat')
   description=request.POST.get('description')
   bprice=request.POST.get('bprice')
 

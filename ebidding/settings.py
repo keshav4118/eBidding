@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'ebidding.views.sessioncheck_middleware',
     'myadmin.views.sessioncheckmyadmin_middleware',
     'user.views.sessioncheckuser_middleware',
+    
 
 ]
 
