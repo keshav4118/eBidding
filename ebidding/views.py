@@ -35,11 +35,9 @@ def viewsubcategory(request):
 
 
 def viewproduct(request):
-    catnm = request.GET.get("catnm")
-    clist = myadmin_models.Category.objects.all()
-    sclist = myadmin_models.SubCategory.objects.filter(catnm=catnm)
-    uplist = user_models.Product.objects.filter(catnm=catnm)
-    return render(request, "viewproduct.html", {"catnm": catnm, "clist": clist, "sclist": sclist, 'uplist':uplist,"media_url": media_url})
+    subcatnm = request.GET.get("subcatnm")
+    uplist = user_models.Product.objects.filter(subcategory=subcatnm)
+    return render(request, "viewproduct.html", {'uplist':uplist,"media_url": media_url})
 
 def about(request):
     return render(request, 'about.html')

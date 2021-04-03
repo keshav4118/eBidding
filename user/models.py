@@ -17,3 +17,10 @@ class Product(models.Model):
     uid=models.CharField(max_length=100)
     info=models.CharField(max_length=100)
 
+class Payment(models.Model):
+    txnid=models.AutoField(primary_key=True)
+    pid=models.IntegerField()
+    uid=models.CharField(max_length=70)
+    amount=models.IntegerField()
+    info=models.CharField(max_length=100)
+    
