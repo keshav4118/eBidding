@@ -24,3 +24,10 @@ class Payment(models.Model):
     amount=models.IntegerField()
     info=models.CharField(max_length=100)
     
+class Bidding(models.Model):
+    bid=models.AutoField(primary_key=True)
+    pid=models.IntegerField()
+    uid=models.CharField(max_length=70)
+    bidamount=models.IntegerField()
+    info=models.CharField(max_length=100)
+    

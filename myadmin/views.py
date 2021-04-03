@@ -72,3 +72,22 @@ def addsubcategory(request):
             catnm=catnm, subcatnm=subcatnm, subcaticonnm=filename)
         p.save()
         return render(request, 'addsubcategory.html', {'output': "Sub Category added Successfully", 'clist': clist, "sunm": request.session["sunm"]})
+
+
+def changepws(request):
+    if request.method == "GET":
+        return render(request,"changepws.html",{"sunm": request.session["sunm"]})
+    else:
+        opass = request.POST.get("opass")
+        npass = request.POST.get("npass")
+        cnpass = request.POST.get("cnpass")
+        res= e_models.Register.objects.filter(username=request.session["sunm"],password=opass).exists()
+        if res:
+            if npass==cnpass:
+                e_models.Register.objects.filter(username=request.session["sunm"],password=opass).update(password=cnpass)
+                return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"password changed successfully , please login again"})
+            else:
+                return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"New & Confirm new password mismatch , try again"})    
+        else:  
+            return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"Invalid old password , please try again"})
+

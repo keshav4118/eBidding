@@ -8,5 +8,6 @@ urlpatterns = [
      path('manageuser/',views.manageuser),
      path('manageuserstatus/',views.manageuserstatus),
      path('addsubcategory/',views.addsubcategory),
+     path('changepws/',views.changepws),
      
 ]

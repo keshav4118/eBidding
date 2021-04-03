@@ -1,0 +1,53 @@
+{% extends "userhome.html" %}
+{% load static %}
+{% block slider %}
+
+<style>
+    body {
+        /* background-image: url("{% static 'image/photo3.jpg'%}"); */
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+  
+    }
+</style>
+<center>
+    <h1>View & Manage Product Here!!!</h1>
+
+    <table class="table table-hover">
+        <thead class="thead-Warning">
+            <tr>
+                <th>Product ID </th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>SubCategory</th>
+                <th>Description</th>
+                <th>BasePrice&nbsp;</th>
+                <th>Product Icon</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="thead-dark">
+            <tr><td colspan="8"><hr></td></tr>
+            {% for row in plist %}
+            <tr>
+                <td>{{row.pid}}</td>
+                <td>{{row.title}}</td>
+                <td>{{row.category}}</td>
+                <td>{{row.subcategory}}</td>
+                <td>{{row.description}}</td>
+                <td>{{row.bprice}}</td>
+                <td><img src="{{media_url}}{{row.file1}}" height="50" width="70" /></td>
+                <td><a href="/user/bidproductview/?pid={{row.pid}}&bprice={{row.bprice}}" style="color: darkblue;">Bid product</a></td>
+                <td>
+            </tr>
+            <tr><td colspan="8"><hr></td></tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+
+</center>
+{% endblock %}
+{% block card %}
+{% endblock %}
