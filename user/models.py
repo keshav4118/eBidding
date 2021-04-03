@@ -16,3 +16,4 @@ class Product(models.Model):
     status=models.IntegerField()
     uid=models.CharField(max_length=100)
     info=models.CharField(max_length=100)
+

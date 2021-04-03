@@ -79,3 +79,6 @@ def fetchSubCategoryAJAX(request):
 def viewproductuser(request):
  plist=models.Product.objects.filter(uid=request.session["sunm"])
  return render(request,"viewproductuser.html",{"plist":plist,"sunm":request.session["sunm"]}) 
+
+def payment(request):
+  return render(request,)
