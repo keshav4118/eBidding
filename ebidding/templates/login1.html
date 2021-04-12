@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
-{% block slider %}{% endblock %}
+{% block manu %}{% endblock %}
 
 
 {% block card %}
 
 <style>
     body {
-        background-image: url("{% static 'image/12.jpg'%}");
+        background-image: url("{% static 'image/photo5.jpg'%}");
         height: 100%;
         background-position: center;
         background-repeat: no-repeat;
@@ -36,15 +36,15 @@
     {% csrf_token %}
     <div class="row">
         <div class="row mb-3 my-5 col-md-7 gap-1">
-            <label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size: 17px;"><b> Username</b> </label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label"> Username </label>
             <div class="col-md-7">
-                <input type="email" class="form-control" name="username" id="inputEmail3" placeholder="Enter Username" required>
+                <input type="email" class="form-control" name="username" id="inputEmail3">
             </div>
         </div>
         <div class="row mb-4 col-md-7 gap-1 ">
-            <label for="inputPassword3" class="col-sm-2 col-form-label"><b>Password</b></label>
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
             <div class="col-md-7">
-                <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Enter Password" required>
+                <input type="password" class="form-control" name="password" id="inputPassword3">
             </div>
         </div>
     </div>
@@ -59,10 +59,10 @@
     <!--  </div>
     </div> -->
     <button style="padding: 0.9%;" type="submit" class="btn btn-primary col-md-5">Sign in</button>
-    <a class="dropdown-item" href="/register/"><b>New around here? Sign up</b></a>
-    <a class="dropdown-item" href="#"><b>Forgot password</b></a>
+    <a class="dropdown-item" href="/register/">New around here? Sign up</a>
+    <a class="dropdown-item" href="#">Forgot password?</a>
 </form>
-<br><br><br>
+
 <div class="dropdown-divider"></div>
 
 

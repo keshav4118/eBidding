@@ -46,14 +46,13 @@
                     <font color="red">Not verified</font>
                     {% endif %}</td>
                 <td>{% if row.status %}
-                    <font>....</font>
+                    <font><a href="/user/bidhistory/?pid={{row.pid}}"> View Bidding Hitory...</a></font>
                     {% else %}
                     <form action={{paypalURL}} method="post">
                         <!-- Identify your business so that you can collect the payments. -->
                         <input type="hidden" name="business" value={{paypalID}}>
                         <!-- Specify a Buy Now button. -->
                         <input type="hidden" name="cmd" value="_xclick">
-
                         <!-- Specify details about the item that buyers will purchase. -->
                         <input type="hidden" name="item_name" value={{row.pid}}>
                         <input type="hidden" name="item_number" value=1>

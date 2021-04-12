@@ -9,7 +9,7 @@ from ebidding import models as e_models
 # middleware to check session for admin routes
 def sessioncheckmyadmin_middleware(get_response):
     def middleware(request):
-        if request.path == '/myadmin/' or request.path == '/myadmin/manageusers/' or request.path == '/myadmin/manageuserstatus/' or request.path == '/myadmin/addcategory/' or request.path == '/myadmin/addsubcategory/':
+        if request.path == '/myadmin/' or request.path == '/myadmin/manageusers/' or request.path == '/myadmin/manageuserstatus/' or request.path == '/myadmin/addcategory/' or request.path == '/myadmin/addsubcategory/' or request.path == '/myadmin/editadmin/' or request.path == '/myadmin/changepws/':
             if request.session['sunm'] == None or request.session['srole'] != "admin":
                 response = redirect('/login/')
             else:
@@ -30,7 +30,16 @@ def manageuser(request):
     userDetails = e_models.Register.objects.filter(role='user')
     return render(request, "manageuser.html", {"userDetails": userDetails, "sunm": request.session["sunm"]})
 
-
+def editadmin(request):
+    if request.method == "GET":
+        return render(request,"editadmin.html",{"sunm": request.session["sunm"]})
+    else:
+        name = request.POST.get("name")
+        mobile = request.POST.get("mobile")
+        address = request.POST.get("address")
+        city = request.POST.get("city")
+        e_models.Register.objects.filter(username=request.session['sunm']).update(name=name,mobile=mobile,address=address,city=city)
+        return render(request,"editadmin.html",{"sunm": request.session["sunm"]})               
 def manageuserstatus(request):
     regid = request.GET.get("regid")
     s = request.GET.get("s")

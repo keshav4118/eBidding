@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "adminhome.html" %}
 {% load static %}
 {% block manu %}{% endblock %}
 
@@ -11,14 +11,13 @@
             background-image: url("{% static 'image/photo5.jpg'%}");
             min-height: 100%;
             background-position: center;
-            background-color: rgb(255, 253, 250);
             background-repeat: no-repeat;
             background-size: auto;
         }
-        /* background-image{
-            filter: blur(8px);
-            -webkit-filter: blur(8px);
-        } */
+        background-image{
+            filter: blur(80px);
+            -webkit-filter: blur(80px);
+        }
       form{
         filter:none;
           padding-left:30%;
@@ -28,10 +27,10 @@
          
       }
         </style>
-    <center><h1> Register Here</h1></center>
+    <center><h1> Edit Profile </h1></center>
 
     <font color="blue">{{output}}</font>
-    <form action="/register/" method="POST">
+    <form action="/admin/editadmin/" method="POST">
         {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-7">
@@ -40,16 +39,6 @@
                 <input type="text" class="form-control" id="name" name="name"
                     placeholder="Enter Your Name">
             </div>
-            <div class="form-group col-md-7">
-                <label for="inputEmail4" class="fw-bold">Username</label>
-                <input type="email" class="form-control" id="username"
-                    name="username" placeholder="Email">
-            </div>
-            <div class="form-group col-md-7">
-                <label for="inputPassword4" class="fw-bold">Password</label>
-                <input type="password" class="form-control" id="password"
-                    name="password" placeholder="Password">
-            </div>
 
             <div class="form-group col-md-7">
                 <label for="inputEmail4" class="fw-bold">Mobile</label>
@@ -57,30 +46,6 @@
                     name="mobile" placeholder="Enter your Number">
             </div>
         </div>
-
-
-
-        <!-- <div class="row">
-    <div class="row mb-3 my-5 col-md-7 gap-1"> -->
-        <div class="form-check">
-            <label for="gender" class="fw-bold">Gender
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input class="form-check-input" type="radio" name="gender"
-                value="male" checked>
-            <label class="form-check-label" for="exampleRadios1">
-                Male &nbsp;&nbsp;&nbsp;&nbsp;
-            </label>
-            <!-- </div>
-          <div class="form-check"> -->
-            <input class="form-check-input" type="radio" name="gender"
-                value="female">
-            <label class="form-check-label" for="exampleRadios2">
-                Female
-            </label>
-        </div>
-        <!-- </div>
-</div> -->
-
         <label for="gender" class="fw-bold">Address</label>
         <div class="form-floating">
             <textarea class="form-control w-50" placeholder="Leave a comment
@@ -109,7 +74,6 @@
         </div>
         <button type="submit" value="Register" class="btn btn-primary fw-bold">Submit</button>
     </form>
-
 </div>
 
 {% endblock %}

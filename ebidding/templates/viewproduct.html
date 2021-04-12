@@ -3,7 +3,7 @@
 <style>
     .card-deck {
         min-height: 470px;
-        min-width: 820px;
+        min-width:100%  ;
         
     }
     
@@ -17,7 +17,16 @@
 
 
 <h1>Products :-</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
 
+
+    <li class="breadcrumb-item"><a href="/viewsubcategory/?catnm={{clist.catnm}}">SubCategory</a></li>
+
+    <li class="breadcrumb-item active" aria-current="page">Products</li>
+  </ol>
+</nav>
 <!-- Container starts -->
 <div class="container my-5">
 

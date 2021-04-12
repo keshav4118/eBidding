@@ -13,11 +13,9 @@ import time
 media_url = settings.MEDIA_URL
 
 # middleware to check session for admin routes
-
-
 def sessioncheckuser_middleware(get_response):
     def middleware(request):
-        if request.path == '/user/' or request.path == '/user/addproduct/':
+        if request.path == '/user/' or request.path == '/user/addproduct/' or request.path == '/user/edituser/' or request.path == '/user/viewproductuser/' or request.path == '/user/bidproduct/' or request.path == '/user/bidproductview/' or request.path == '/user/mybid/' or request.path == '/user/userchangepws/' or request.path == '/user/payment/':
             if request.session['sunm'] == None or request.session['srole'] != "user":
                 response = redirect('/login/')
             else:
@@ -93,6 +91,19 @@ def viewproductuser(request):
     return render(request, "viewproductuser.html", {"plist": plist, "paypalURL": paypalURL, "paypalID": paypalID, "sunm": request.session["sunm"]})
 
 
+def edituser(request):
+    if request.method == "GET":
+        return render(request, "edituser.html", {"sunm": request.session["sunm"]})
+    else:
+        name = request.POST.get("name")
+        mobile = request.POST.get("mobile")
+        address = request.POST.get("address")
+        city = request.POST.get("city")
+        e_models.Register.objects.filter(username=request.session['sunm']).update(
+            name=name, mobile=mobile, address=address, city=city)
+        return render(request, "edituser.html", {"sunm": request.session["sunm"]})
+
+
 def payment(request):
     pid = request.GET.get('pid')
     uid = request.GET.get('uid')
@@ -125,7 +136,11 @@ def bidproductview(request):
 
     bidlist = models.Bidding.objects.filter(pid=pid)
     if len(bidlist) > 0:
-        cprice = 0
+        bidDetail = models.Bidding.objects.filter(pid=pid)
+    
+        cprice = bidDetail[len(bidDetail)-1].bidamount
+
+
     else:
         cprice = bprice
 
@@ -135,7 +150,6 @@ def bidproductview(request):
     else:
         bstatus = True
     return render(request, "bidproductview.html", {"sunm": request.session["sunm"], "bstatus": bstatus, "pid": pid, "bprice": bprice, "cprice": cprice})
-
 
 def mybid(request):
     pid = request.POST.get('pid')
@@ -149,20 +163,27 @@ def mybid(request):
     return redirect("/user/bidproductview/?pid="+str(pid)+"&bprice="+str(bprice))
 
 
-def changepws(request):
+def userchangepws(request):
     if request.method == "GET":
-        return render(request,"changepws.html",{"sunm": request.session["sunm"]})
+        return render(request, "userchangepws.html", {"sunm": request.session["sunm"]})
     else:
         opass = request.POST.get("opass")
         npass = request.POST.get("npass")
         cnpass = request.POST.get("cnpass")
-        res= e_models.Register.objects.filter(username=request.session["sunm"],password=opass).exists()
+        res = e_models.Register.objects.filter(
+            username=request.session["sunm"], password=opass).exists()
         if res:
-            if npass==cnpass:
-                e_models.Register.objects.filter(username=request.session["sunm"],password=opass).update(password=cnpass)
-                return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"password changed successfully , please login again"})
+            if npass == cnpass:
+                e_models.Register.objects.filter(
+                    username=request.session["sunm"], password=opass).update(password=cnpass)
+                return render(request, "userchangepws.html", {"sunm": request.session["sunm"], "output": "password changed successfully , please login again"})
             else:
-                return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"New & Confirm new password mismatch , try again"})    
-        else:  
-            return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"Invalid old password , please try again"})
+                return render(request, "userchangepws.html", {"sunm": request.session["sunm"], "output": "New & Confirm new password mismatch , try again"})
+        else:
+            return render(request, "userchangepws.html", {"sunm": request.session["sunm"], "output": "Invalid old password , please try again"})
 
+
+def bidhistory(request):
+    pid = int(request.GET.get("pid"))
+    bidDetail = models.Bidding.objects.filter(pid=pid)
+    return render(request,'bidhistory.html',{"sunm": request.session["sunm"],"bidDetail":bidDetail})
