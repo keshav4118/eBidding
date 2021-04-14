@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block slider %}{% endblock %}
+
+
+{% block card %}
+
+<style>
+    body {
+        background-image: url("{% static 'image/photo5.jpg'%}");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+
+    .dropdown-item:hover {
+        font-size: 20px;
+        text-transform: uppercase;
+        text-shadow: yellowgreen;
+    }
+    .dropdown-item:hover {background: none;
+    color: rgb(0, 0, 0);}
+
+    form {
+        border-style: none;
+        border-radius: 4%;
+    }
+</style>
+<font color="blue">{{output}}</font>
+<center>
+    <h1>Forget Password  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+</center>
+
+<form style="margin: auto;" method="POST" action="/forgetpws/">
+    {% csrf_token %}
+    <div class="row">
+
+
+        <div class="row mb-3 my-5 col-md-7 gap-1">
+          <h6>  <p>Enter the email address associated with your eBidding account.</p></h6>
+            <label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size: 17px;"><b> Username </b> </label>
+            <div class="col-md-7">
+                <input type="email" class="form-control" name="username" id="inputEmail3" placeholder="Enter Username"  required>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <button style="padding: 0.9%;" type="submit" class="btn btn-primary col-md-5"> Continue </button>
+
+</form>
+
+<br><br><br><br>
+<br><br><br> 
+<div class="dropdown-divider"></div>
+
+{% endblock %}

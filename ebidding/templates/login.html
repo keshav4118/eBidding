@@ -36,22 +36,22 @@
     {% csrf_token %}
     <div class="row">
         <div class="row mb-3 my-5 col-md-7 gap-1">
-            <label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size: 17px;"><b> Username</b> </label>
+            <label for="inputEmail3" class="col-sm-2 col-form-label" style="font-size: 17px;"><b> Username </b> </label>
             <div class="col-md-7">
-                <input type="email" class="form-control" name="username" id="inputEmail3" placeholder="Enter Username" required>
+                <input type="email" class="form-control" name="username" id="inputEmail3" placeholder="Enter Username" value="{{cunm}}" required>
             </div>
         </div>
         <div class="row mb-4 col-md-7 gap-1 ">
             <label for="inputPassword3" class="col-sm-2 col-form-label"><b>Password</b></label>
             <div class="col-md-7">
-                <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Enter Password" required>
+                <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Enter Password" value="{{cpass}}" required>
             </div>
         </div>
     </div>
     <!-- <div class="row">
         <div class="col-md-5 offset-sm-2"> -->
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1">
+        <input class="form-check-input" type="checkbox" name="chk" value="remember" id="gridCheck1">
         <label class="form-check-label" for="gridCheck1">
             Remember the password
         </label><br>
@@ -60,13 +60,9 @@
     </div> -->
     <button style="padding: 0.9%;" type="submit" class="btn btn-primary col-md-5">Sign in</button>
     <a class="dropdown-item" href="/register/"><b>New around here? Sign up</b></a>
-    <a class="dropdown-item" href="#"><b>Forgot password</b></a>
+    <a class="dropdown-item" href="/forgetpws/"><b>Forgot password</b></a>
 </form>
 <br><br><br>
 <div class="dropdown-divider"></div>
-
-
-
-
 
 {% endblock %}
