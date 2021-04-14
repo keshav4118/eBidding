@@ -15,7 +15,7 @@ media_url = settings.MEDIA_URL
 # middleware to check session for admin routes
 def sessioncheckuser_middleware(get_response):
     def middleware(request):
-        if request.path == '/user/' or request.path == '/user/addproduct/' or request.path == '/user/edituser/' or request.path == '/user/viewproductuser/' or request.path == '/user/bidproduct/' or request.path == '/user/bidproductview/' or request.path == '/user/mybid/' or request.path == '/user/userchangepws/' or request.path == '/user/payment/':
+        if request.path == '/user/' or request.path == '/user/addproduct/' or request.path == '/user/edituser/' or request.path == '/user/viewproductuser/' or request.path == '/user/bidproduct/' or request.path == '/user/bidproductview/' or request.path == '/user/mybid/' or request.path == '/user/userchangepws/' or request.path == '/user/payment/' or request.path == '/user/bidhistory':
             if request.session['sunm'] == None or request.session['srole'] != "user":
                 response = redirect('/login/')
             else:

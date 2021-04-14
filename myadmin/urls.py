@@ -10,5 +10,7 @@ urlpatterns = [
      path('manageuserstatus/',views.manageuserstatus),
      path('addsubcategory/',views.addsubcategory),
      path('changepws/',views.changepws),
-     
+     path('bidproducthistory/',views.bidproducthistory),
+     path("adminbidproduct/",views.adminbidproduct),
+     path("manageProductstatus/",views.manageProductstatus)
 ]

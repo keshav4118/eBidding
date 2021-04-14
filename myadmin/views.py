@@ -1,15 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
+from django.db.models import Q  # this is for excluding terms in Filter
+from django.conf import settings
 
 from . import models
+from user import models as user_models
 from ebidding import models as e_models
 
+media_url = settings.MEDIA_URL
 
 # middleware to check session for admin routes
 def sessioncheckmyadmin_middleware(get_response):
     def middleware(request):
-        if request.path == '/myadmin/' or request.path == '/myadmin/manageusers/' or request.path == '/myadmin/manageuserstatus/' or request.path == '/myadmin/addcategory/' or request.path == '/myadmin/addsubcategory/' or request.path == '/myadmin/editadmin/' or request.path == '/myadmin/changepws/':
+        if request.path == '/myadmin/' or request.path == '/myadmin/manageusers/' or request.path == '/myadmin/manageuserstatus/' or request.path == '/myadmin/addcategory/' or request.path == '/myadmin/addsubcategory/' or request.path == '/myadmin/editadmin/' or request.path == '/myadmin/changepws/' or request.path == '/myadmin/adminbidproduct/'  or request.path == '/myadmin/bidproducthistory/'  or request.path == '/myadmin/manageProductstatus/':
             if request.session['sunm'] == None or request.session['srole'] != "admin":
                 response = redirect('/login/')
             else:
@@ -100,3 +104,20 @@ def changepws(request):
         else:  
             return render(request,"changepws.html",{"sunm":request.session["sunm"],"output":"Invalid old password , please try again"})
 
+def bidproducthistory(request):
+    bidDetail = user_models.Bidding.objects.filter()
+    return render(request,'bidproducthistory.html',{"sunm": request.session["sunm"],"bidDetail":bidDetail})
+
+def adminbidproduct(request):
+    plist = user_models.Product.objects.filter(~Q(uid=request.session["sunm"]))
+    return render(request, "adminbidproduct.html", {"sunm": request.session["sunm"], "plist": plist, "media_url": media_url})
+
+def manageProductstatus(request):
+    pid = int(request.GET.get("pid"))
+    bprice = int(request.GET.get("bprice"))
+    s = request.GET.get("s")
+    
+    if s == "delete":
+        user_models.Product.objects.filter(pid=int(pid)).delete()
+    
+    return redirect("/myadmin/adminbidproduct/")
