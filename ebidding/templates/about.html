@@ -1,2 +1,83 @@
 {% extends "base.html" %}
-{% block manu %}{% endblock %}
+{% load static %}
+{% block slider %}{% endblock %}
+{% block card %}
+
+<div class="container my-4">
+    <div class="row featurette d-flex justify-content-center align-items">
+        <div class="col-md-6">
+            <h2 class="featurette-heading">eBidding <span
+                    class="text-muted">It’ll blow your
+                    mind.</span></h2>
+            <p class="lead">eBidding is a multi-seller Marketplace venue
+                where individuals can Buy, Sell, or submit Offers on virtually
+                anything! Launched in 2020 by an ecommerce team with 25+ years
+                of combined experience, eBidding has evolved into a
+                feature-rich e-tail space where Sellers and Buyers from around
+                the globe can meet and interact. Sellers can set up shop
+                instantly, and Buyers will love our intuitive design and
+                navigation features.
+                <ul>
+
+                    <li>
+                        We believe feedback is a two-way street. At eBidding,
+                        Buyers and Sellers are always treated as equals.
+                    </li>
+                    <li>
+                        We make all rules and site user-friendly for user comfort.
+                    </li>
+                    <li>
+                        Our mission: To make online shopping simple, fun, and
+                        rewarding.
+                        Get your "quirk" on at the web's most eclectic shopping
+                        site.</li>
+                    <span style="color:rgb(145, 146, 143);font-weight:bold">
+                        Shop. Click. Smile. :o)</span>
+                </ul>
+            </p>
+        </div>
+        <div class="col-md-5 my-3">
+            <img class="bd-placeholder-img bd-placeholder-img-lg
+                featurette-image img-fluid mx-auto" width="500"
+                height="500"
+                src="{% static 'image/222.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="container my-4">
+    <section>
+        <h5> What is Webstore?</h5>
+        <p>
+            Webstore is a free online auction marketplace offering local,
+            national,
+            and
+            international trade with no fees for bidding, buying, or selling.
+            You
+            can
+            turn your unwanted stuff into cash, and get the best possible deals
+            for
+            new
+            or used things on Webstore with no selling fees, and no bidding
+            fees.
+            Just like an online garage sale, on Webstore you can find online
+            auctions
+            for items that haven't been sold in decades. Rare and collectable
+            merchandise, as well as state of the art new electronics. It's all
+            here!</p>
+    </section>
+
+    <section>
+        <h5>Why online auctions?</h5>
+        <p>Online Auctions offer buyers the lowest possible price for unique
+            items
+            that
+            only they may be interested in, while at the same time offering
+            sellers
+            the
+            highest dollar amount for an item which is rare, collectable, and/or
+            highly
+            sought after.</p>
+    </section>
+</div>
+{% endblock %}
